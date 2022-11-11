@@ -9,7 +9,6 @@ import type { RatingRange } from './Types';
 
 type SubmittedModalProps = {
   rating: RatingRange | undefined;
-  handleShowHideModal: () => void;
   hideModal: () => void;
 };
 

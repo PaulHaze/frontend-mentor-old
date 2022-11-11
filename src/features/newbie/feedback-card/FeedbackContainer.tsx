@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { SubmittedModal } from './SubmittedModal';
 import { FeedbackCard } from './FeedbackCard';
 
-export type RatingRange = '1' | '2' | '3' | '4' | '5' | null;
+import type { RatingRange } from './Types';
 
 export function FeedbackContainer() {
-  const [selectedRating, setSelectedRating] = React.useState<RatingRange>();
-  const [showModal, setShowModal] = useState(false);
+  const [selectedRating, setSelectedRating] =
+    React.useState<RatingRange | null>(null);
 
-  const handleShowHideModal = () => setShowModal((prev) => !prev);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSelectRating = (selection: RatingRange) => {
     setSelectedRating(selection);
@@ -19,7 +19,6 @@ export function FeedbackContainer() {
   return showModal ? (
     <SubmittedModal
       hideModal={() => setShowModal(false)}
-      handleShowHideModal={handleShowHideModal}
       rating={selectedRating}
     />
   ) : (
